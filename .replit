@@ -38,3 +38,8 @@ externalPort = 80
 
 [userenv.shared]
 NODE_OPTIONS = "--openssl-legacy-provider"
+
+[deployment]
+deploymentTarget = "autoscale"
+run = ["bundle", "exec", "puma", "-C", "config/puma.rb", "-b", "tcp://0.0.0.0:5000"]
+build = ["bash", "-c", "bundle install && NODE_OPTIONS=--openssl-legacy-provider bundle exec rails assets:precompile && bundle exec rails db:migrate"]
