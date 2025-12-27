@@ -1,0 +1,31 @@
+find_executable: checking for pg_config... -------------------- no
+
+--------------------
+
+find_header: checking for libpq-fe.h... -------------------- no
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -o conftest -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC conftest.c  -L. -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -lruby-3.2.2  -lm -lpthread  -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC   -c conftest.c"
+conftest.c:3:10: fatal error: libpq-fe.h: No such file or directory
+    3 | #include <libpq-fe.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <libpq-fe.h>
+/* end */
+
+--------------------
+

@@ -1,0 +1,196 @@
+block in append_cflags: checking for whether -std=c99 is accepted as CFLAGS... -------------------- yes
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -o conftest -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC conftest.c  -L. -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -lruby-3.2.2  -lm -lpthread  -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC  -std=c99 -Werror -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+--------------------
+
+block in append_cflags: checking for whether -Wno-declaration-after-statement is accepted as CFLAGS... -------------------- yes
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC -std=c99  -Wno-declaration-after-statement -Werror -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+--------------------
+
+block in append_cflags: checking for whether -g is accepted as CFLAGS... -------------------- yes
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC -std=c99 -Wno-declaration-after-statement  -g -Werror -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+--------------------
+
+block in append_cflags: checking for whether -Winline is accepted as CFLAGS... -------------------- yes
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC -std=c99 -Wno-declaration-after-statement -g  -Winline -Werror -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+--------------------
+
+block in append_cflags: checking for whether -Wmissing-noreturn is accepted as CFLAGS... -------------------- yes
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC -std=c99 -Wno-declaration-after-statement -g -Winline  -Wmissing-noreturn -Werror -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+--------------------
+
+have_library: checking for gzdopen() in -lz... -------------------- no
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -o conftest -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC -std=c99 -Wno-declaration-after-statement -g -Winline -Wmissing-noreturn conftest.c  -L. -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -lruby-3.2.2 -lz  -lm -lpthread  -lc"
+conftest.c:3:10: fatal error: zlib.h: No such file or directory
+    3 | #include <zlib.h>
+      |          ^~~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <zlib.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))gzdopen; return !p; }
+/* end */
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -o conftest -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC -std=c99 -Wno-declaration-after-statement -g -Winline -Wmissing-noreturn conftest.c  -L. -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -lruby-3.2.2 -lz  -lm -lpthread  -lc"
+conftest.c:3:10: fatal error: zlib.h: No such file or directory
+    3 | #include <zlib.h>
+      |          ^~~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <zlib.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: extern void gzdopen();
+17: int t(void) { gzdopen(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for gzdopen() in -llibz... -------------------- no
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -o conftest -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC -std=c99 -Wno-declaration-after-statement -g -Winline -Wmissing-noreturn conftest.c  -L. -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -lruby-3.2.2 -llibz  -lm -lpthread  -lc"
+conftest.c:3:10: fatal error: zlib.h: No such file or directory
+    3 | #include <zlib.h>
+      |          ^~~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <zlib.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))gzdopen; return !p; }
+/* end */
+
+LD_LIBRARY_PATH=.:/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib "gcc -o conftest -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC -std=c99 -Wno-declaration-after-statement -g -Winline -Wmissing-noreturn conftest.c  -L. -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -L/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/lib -lruby-3.2.2 -llibz  -lm -lpthread  -lc"
+conftest.c:3:10: fatal error: zlib.h: No such file or directory
+    3 | #include <zlib.h>
+      |          ^~~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <zlib.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: extern void gzdopen();
+17: int t(void) { gzdopen(); return 0; }
+/* end */
+
+--------------------
+

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.2'
+ruby '3.0.0'
 
 gem 'logger', '~> 1.5.0'
 gem 'bootsnap', '>= 1.4.4', require: false

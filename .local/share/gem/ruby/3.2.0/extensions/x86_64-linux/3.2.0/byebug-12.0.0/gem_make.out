@@ -1,0 +1,22 @@
+current directory: /home/runner/workspace/.local/share/gem/ruby/3.2.0/gems/byebug-12.0.0/ext/byebug
+/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/runner/workspace/.local/share/gem/ruby/3.2.0/gems/byebug-12.0.0/ext/byebug
+make DESTDIR\= sitearchdir\=./.gem.20251227-4904-n1tztp sitelibdir\=./.gem.20251227-4904-n1tztp clean
+
+current directory: /home/runner/workspace/.local/share/gem/ruby/3.2.0/gems/byebug-12.0.0/ext/byebug
+make DESTDIR\= sitearchdir\=./.gem.20251227-4904-n1tztp sitelibdir\=./.gem.20251227-4904-n1tztp
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/runner/workspace/.local/share/gem/ruby/3.2.0/gems/byebug-12.0.0/ext/byebug
+make DESTDIR\= sitearchdir\=./.gem.20251227-4904-n1tztp sitelibdir\=./.gem.20251227-4904-n1tztp install
+install -c -p -m 755 byebug.so ./.gem.20251227-4904-n1tztp/byebug
+
+current directory: /home/runner/workspace/.local/share/gem/ruby/3.2.0/gems/byebug-12.0.0/ext/byebug
+make DESTDIR\= sitearchdir\=./.gem.20251227-4904-n1tztp sitelibdir\=./.gem.20251227-4904-n1tztp clean

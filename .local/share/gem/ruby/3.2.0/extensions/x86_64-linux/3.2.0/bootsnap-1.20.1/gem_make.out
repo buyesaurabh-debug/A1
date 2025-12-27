@@ -1,0 +1,23 @@
+current directory: /home/runner/workspace/.local/share/gem/ruby/3.2.0/gems/bootsnap-1.20.1/ext/bootsnap
+/nix/store/l8k1zfxjixk6f5sya5x86sdyxffz6bcf-ruby-3.2.2/bin/ruby extconf.rb
+checking for fdatasync() in unistd.h... yes
+checking for fstatat() in sys/stat.h... yes
+checking for whether -D_GNU_SOURCE is accepted as CPPFLAGS... yes
+checking for whether -O3 is accepted as CFLAGS... yes
+checking for whether -std=c99 is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: /home/runner/workspace/.local/share/gem/ruby/3.2.0/gems/bootsnap-1.20.1/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20251227-4904-7x91ox sitelibdir\=./.gem.20251227-4904-7x91ox clean
+
+current directory: /home/runner/workspace/.local/share/gem/ruby/3.2.0/gems/bootsnap-1.20.1/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20251227-4904-7x91ox sitelibdir\=./.gem.20251227-4904-7x91ox
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /home/runner/workspace/.local/share/gem/ruby/3.2.0/gems/bootsnap-1.20.1/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20251227-4904-7x91ox sitelibdir\=./.gem.20251227-4904-7x91ox install
+install -c -p -m 755 bootsnap.so ./.gem.20251227-4904-7x91ox/bootsnap
+
+current directory: /home/runner/workspace/.local/share/gem/ruby/3.2.0/gems/bootsnap-1.20.1/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20251227-4904-7x91ox sitelibdir\=./.gem.20251227-4904-7x91ox clean
