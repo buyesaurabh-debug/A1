@@ -1,0 +1,234 @@
+🔴 PRIORITY 0 — FOUNDATION (MUST EXIST FIRST)
+
+These are non-negotiable. Everything depends on this.
+
+1. User
+
+Auth via Devise
+
+A user:
+
+Can belong to multiple groups
+
+Can pay expenses
+
+Can owe / be owed
+
+📌 Logic:
+
+User exists independently of groups
+
+Deleting user is out of scope
+
+2. Group
+
+Group has:
+
+name
+
+admin (creator)
+
+Group has many users via group_members
+
+Group has many expenses
+
+📌 Rules:
+
+Anyone can create a group
+
+Creator becomes admin
+
+Users cannot leave group unless net balance = 0
+
+3. Group Membership
+
+Join table: group_members
+
+Prevent duplicate membership
+
+Admin is always a member
+
+📌 Rules:
+
+User must belong to group to see data
+
+Membership is mandatory for expense participation
+
+🔴 PRIORITY 1 — CORE MONEY ENGINE (MOST IMPORTANT)
+
+This is what interviewers care about.
+
+4. Expense (Core Object)
+
+Expense belongs to:
+
+group
+
+payer (User)
+
+Expense has:
+
+description
+
+total_amount
+
+optional tax
+
+📌 Rules:
+
+Only group members can create expense
+
+Payer must be a group member
+
+5. Expense Items
+
+Expense contains multiple items
+
+Each item has:
+
+name
+
+amount
+
+assigned_to OR shared
+
+📌 Rules:
+
+Item can be:
+
+Assigned fully to one user
+
+Shared equally among selected users
+
+Validation:
+
+Sum(items) + tax == total_amount
+
+6. Expense Participants (Balance Engine)
+
+Join table: expense_participants
+
+Fields:
+
+user_id
+
+expense_id
+
+share_amount
+
+📌 Rules:
+
+Each user’s share stored explicitly
+
+No runtime calculation
+
+Balance is derived from stored values
+
+7. Balance Calculation (CRITICAL)
+
+📌 Per user, per group:
+
+total_owed_to_user = sum(shares where user is payer)
+total_user_owes    = sum(shares where user is participant)
+net_balance        = owed_to_user - user_owes
+
+
+📌 Rules:
+
+Positive → others owe you
+
+Negative → you owe others
+
+Zero → settled
+
+🔴 PRIORITY 2 — DASHBOARD & VIEWS
+8. Dashboard (My View)
+
+Must show:
+
+Total balance
+
+Total you owe
+
+Total owed to you
+
+Friends you owe + amount
+
+Friends who owe you + amount
+
+Your expenses
+
+Friends’ expenses (group-wise)
+
+📌 Rules:
+
+All numbers derived from expense_participants
+
+No cached values
+
+9. Friend Page
+
+Shows:
+
+Friend’s expenses
+
+Shared expenses with you
+
+Read-only
+
+🟠 PRIORITY 3 — SETTLEMENTS (BONUS BUT IMPORTANT)
+10. Settlement
+
+Records a payment between two users
+
+Fields:
+
+from_user
+
+to_user
+
+amount
+
+optional note
+
+📌 Rules:
+
+Settlement creates negative expense
+
+Reduces balances
+
+Cannot over-settle
+
+📌 Important:
+
+Settlement does NOT delete expenses
+
+Settlement affects balances only
+
+🟡 PRIORITY 4 — NOTIFICATIONS (ADD AFTER CORE)
+
+These are decoupled from business logic.
+
+11. Email Invites
+
+Triggered when user invited to group
+
+ActionMailer
+
+No tracking / expiry
+
+12. Real-Time Notifications (ActionCable)
+
+Triggered on:
+
+Expense created
+
+Settlement completed
+
+Group invite accepted
+
+📌 Rules:
+
+Notifications are passive
+
+Failure does not rollback transaction
