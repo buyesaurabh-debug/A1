@@ -158,6 +158,7 @@ Visit `http://localhost:5000` in your browser.
 | `settlements/` | **NEW** - Settlement creation form with balance hints. |
 | `friends/show.html.slim` | **NEW** - Friend page showing shared expenses. |
 | `layouts/_top_nav_bar.html.slim` | **UPDATED** - Navigation bar with Dashboard, Groups links. |
+| `devise/sessions/new.html.slim` | **UPDATED** - Sign in page with link to sign up page. |
 
 ### Configuration Files
 
@@ -203,7 +204,7 @@ balance = (what you paid for others) - (your share of expenses) + (settlements y
 
 ## Testing the Application
 
-1. **Sign Up**: Create a new account at `/users/sign_up`
+1. **Sign Up**: Visit `/users/sign_in` and click the "Sign up" link, or go directly to `/users/sign_up`
 2. **Create a Group**: Click "New Group" from the dashboard
 3. **Add Members**: Use the "Add Member" button (enter email of existing users)
 4. **Add Expenses**: Create expenses and choose split type (equal or custom)
