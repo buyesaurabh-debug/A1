@@ -1,0 +1,14 @@
+| New expense: #{@expense.description}
+
+| Hi #{@recipient.display_name}!
+
+| #{@payer.display_name} added a new expense in #{@group.name}:
+
+| Description: #{@expense.description}
+| Total Amount: #{number_to_currency(@expense.total_amount)}
+| Paid by: #{@payer.display_name}
+
+| View the group here: #{@group_url}
+
+| Thanks,
+| The Splitwise Team

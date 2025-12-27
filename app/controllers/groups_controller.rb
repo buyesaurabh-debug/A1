@@ -46,14 +46,18 @@ class GroupsController < ApplicationController
   end
 
   def add_member
-    user = User.find_by(email: params[:email])
+    email = params[:email]&.strip&.downcase
+    user = User.find_by(email: email)
 
     if user.nil?
-      redirect_to @group, alert: 'User not found with that email.'
+      GroupMailer.invitation(@group, current_user, email).deliver_later
+      redirect_to @group, notice: 'Invitation sent to the email address.'
     elsif @group.member?(user)
       redirect_to @group, alert: 'User is already a member.'
     else
       @group.add_member(user)
+      GroupMailer.member_added(@group, user, current_user).deliver_later
+      NotificationService.notify_member_added(@group, user, current_user)
       redirect_to @group, notice: 'Member added successfully.'
     end
   end

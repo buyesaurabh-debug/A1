@@ -1,0 +1,16 @@
+| Settlement recorded in #{@group.name}
+
+| Hi #{@recipient.display_name}!
+
+| A settlement has been recorded in #{@group.name}:
+
+| From: #{@settlement.from_user.display_name}
+| To: #{@settlement.to_user.display_name}
+| Amount: #{number_to_currency(@settlement.amount)}
+- if @settlement.note.present?
+  | Note: #{@settlement.note}
+
+| View the group here: #{@group_url}
+
+| Thanks,
+| The Splitwise Team

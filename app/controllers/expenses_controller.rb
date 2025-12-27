@@ -24,6 +24,8 @@ class ExpensesController < ApplicationController
 
     if @expense.save
       create_participants
+      notify_participants_of_expense
+      NotificationService.notify_expense_created(@expense)
       redirect_to group_expense_path(@group, @expense), notice: 'Expense was successfully created.'
     else
       @members = @group.users
@@ -93,6 +95,13 @@ class ExpensesController < ApplicationController
         share = participant_shares[member.id.to_s].to_f
         @expense.expense_participants.create(user: member, share_amount: share) if share > 0
       end
+    end
+  end
+
+  def notify_participants_of_expense
+    @expense.expense_participants.includes(:user).each do |participant|
+      next if participant.user == current_user
+      GroupMailer.new_expense(@expense, participant.user).deliver_later
     end
   end
 end

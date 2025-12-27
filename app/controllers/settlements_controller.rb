@@ -14,6 +14,8 @@ class SettlementsController < ApplicationController
     @settlement.from_user = current_user
 
     if @settlement.save
+      GroupMailer.new_settlement(@settlement, @settlement.to_user).deliver_later
+      NotificationService.notify_settlement_created(@settlement)
       redirect_to @group, notice: 'Settlement recorded successfully.'
     else
       @members = @group.users.where.not(id: current_user.id)
