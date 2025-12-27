@@ -1,0 +1,19 @@
+.container.py-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    h1 Your Groups
+    = link_to 'New Group', new_group_path, class: 'btn btn-primary'
+
+  - if @groups.any?
+    .row
+      - @groups.each do |group|
+        .col-md-4.mb-4
+          .card
+            .card-body
+              h5.card-title = group.name
+              p.card-text
+                small.text-muted
+                  = pluralize(group.users.count, 'member')
+              = link_to 'View', group, class: 'btn btn-outline-primary btn-sm'
+  - else
+    .alert.alert-info
+      | You haven't joined any groups yet. Create one to get started!

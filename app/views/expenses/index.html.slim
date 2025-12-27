@@ -1,0 +1,29 @@
+.container.py-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    h1 Expenses in #{@group.name}
+    = link_to 'Add Expense', new_group_expense_path(@group), class: 'btn btn-primary'
+
+  - if @expenses.any?
+    table.table.table-hover
+      thead
+        tr
+          th Description
+          th Paid By
+          th Amount
+          th Participants
+          th Date
+          th
+      tbody
+        - @expenses.each do |expense|
+          tr
+            td = link_to expense.description, group_expense_path(@group, expense)
+            td = expense.payer.display_name
+            td = number_to_currency(expense.total_amount)
+            td = expense.expense_participants.count
+            td = expense.created_at.strftime('%b %d, %Y')
+            td
+              = link_to 'Edit', edit_group_expense_path(@group, expense), class: 'btn btn-sm btn-outline-secondary'
+  - else
+    .alert.alert-info No expenses yet!
+
+  = link_to 'Back to Group', @group, class: 'btn btn-link'

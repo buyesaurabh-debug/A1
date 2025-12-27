@@ -1,0 +1,40 @@
+.container.py-4
+  h1.mb-4 Settle Up
+
+  .row
+    .col-md-6
+      .card.mb-4
+        .card-header Your Balances in #{@group.name}
+        .card-body
+          - balance = @balance_service.balance_for(current_user)
+          h4 class=(balance >= 0 ? 'text-success' : 'text-danger')
+            = number_to_currency(balance)
+
+          - debts = @balance_service.debts_for(current_user)
+          - if debts.any?
+            h6.mt-3 You Owe:
+            ul.list-group.list-group-flush
+              - debts.each do |debt|
+                li.list-group-item.d-flex.justify-content-between
+                  = debt[:user].display_name
+                  span.text-danger = number_to_currency(debt[:amount])
+
+      = form_with model: [@group, @settlement], local: true do |f|
+        .card
+          .card-body
+            .mb-3
+              = f.label :to_user_id, 'Pay To', class: 'form-label'
+              = f.select :to_user_id, @members.map { |m| [m.display_name, m.id] }, { prompt: 'Select person' }, class: 'form-select'
+
+            .mb-3
+              = f.label :amount, class: 'form-label'
+              .input-group
+                span.input-group-text $
+                = f.number_field :amount, class: 'form-control', step: 0.01, min: 0.01, placeholder: '0.00'
+
+            .mb-3
+              = f.label :note, 'Note (optional)', class: 'form-label'
+              = f.text_area :note, class: 'form-control', rows: 2, placeholder: 'Add a note...'
+
+            = f.submit 'Record Settlement', class: 'btn btn-success'
+            = link_to 'Cancel', @group, class: 'btn btn-link'

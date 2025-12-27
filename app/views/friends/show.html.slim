@@ -1,0 +1,41 @@
+.container.py-4
+  h1.mb-4 = @friend.display_name
+
+  .row
+    .col-md-8
+      .card.mb-4
+        .card-header Shared Expenses
+        .card-body
+          - if @shared_expenses.any?
+            table.table
+              thead
+                tr
+                  th Description
+                  th Group
+                  th Paid By
+                  th Amount
+                  th Date
+              tbody
+                - @shared_expenses.each do |item|
+                  tr
+                    td = link_to item[:expense].description, group_expense_path(item[:group], item[:expense])
+                    td = item[:group].name
+                    td = item[:expense].payer.display_name
+                    td = number_to_currency(item[:expense].total_amount)
+                    td = item[:expense].created_at.strftime('%b %d, %Y')
+          - else
+            p.text-muted No shared expenses with this person.
+
+    .col-md-4
+      .card
+        .card-header Shared Groups
+        .card-body
+          - if @shared_groups.any?
+            ul.list-group.list-group-flush
+              - @shared_groups.each do |group|
+                li.list-group-item
+                  = link_to group.name, group
+          - else
+            p.text-muted No shared groups.
+
+  = link_to 'Back to Dashboard', dashboard_path, class: 'btn btn-link'

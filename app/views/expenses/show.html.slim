@@ -1,0 +1,63 @@
+.container.py-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    h1 = @expense.description
+    div
+      = link_to 'Edit', edit_group_expense_path(@group, @expense), class: 'btn btn-outline-secondary me-2'
+      = link_to 'Delete', group_expense_path(@group, @expense), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Are you sure?' }
+
+  .row
+    .col-md-8
+      .card.mb-4
+        .card-body
+          dl.row
+            dt.col-sm-3 Group
+            dd.col-sm-9 = link_to @group.name, @group
+
+            dt.col-sm-3 Paid By
+            dd.col-sm-9 = @expense.payer.display_name
+
+            dt.col-sm-3 Total Amount
+            dd.col-sm-9 = number_to_currency(@expense.total_amount)
+
+            - if @expense.tax.to_f > 0
+              dt.col-sm-3 Tax
+              dd.col-sm-9 = number_to_currency(@expense.tax)
+
+            dt.col-sm-3 Date
+            dd.col-sm-9 = @expense.created_at.strftime('%B %d, %Y at %I:%M %p')
+
+      .card
+        .card-header
+          h5 Participants
+        .card-body
+          table.table
+            thead
+              tr
+                th Name
+                th Share
+            tbody
+              - @participants.each do |participant|
+                tr
+                  td
+                    = participant.user.display_name
+                    - if participant.user == @expense.payer
+                      span.badge.bg-primary.ms-2 Payer
+                  td = number_to_currency(participant.share_amount)
+
+    .col-md-4
+      .card
+        .card-header Quick Summary
+        .card-body
+          p
+            strong Payer: 
+            = @expense.payer.display_name
+            |  paid 
+            = number_to_currency(@expense.total_amount)
+          p
+            strong Split between: 
+            = pluralize(@participants.count, 'person')
+          p
+            strong Each share: 
+            = number_to_currency(@expense.total_amount / @participants.count) rescue 'N/A'
+
+  = link_to 'Back to Group', @group, class: 'btn btn-link'

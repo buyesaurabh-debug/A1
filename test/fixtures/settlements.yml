@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_user: one
+  to_user: one
+  group: one
+  amount: 9.99
+  note: MyText
+
+two:
+  from_user: two
+  to_user: two
+  group: two
+  amount: 9.99
+  note: MyText

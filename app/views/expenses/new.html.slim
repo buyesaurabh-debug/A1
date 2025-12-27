@@ -1,0 +1,49 @@
+.container.py-4
+  h1.mb-4 Add Expense
+
+  .row
+    .col-md-8
+      = form_with model: [@group, @expense], local: true do |f|
+        .card.mb-4
+          .card-body
+            .mb-3
+              = f.label :description, class: 'form-label'
+              = f.text_field :description, class: 'form-control', placeholder: 'What was this expense for?'
+
+            .row
+              .col-md-6
+                .mb-3
+                  = f.label :total_amount, 'Amount', class: 'form-label'
+                  .input-group
+                    span.input-group-text $
+                    = f.number_field :total_amount, class: 'form-control', step: 0.01, min: 0.01, placeholder: '0.00'
+
+              .col-md-6
+                .mb-3
+                  = f.label :tax, 'Tax (optional)', class: 'form-label'
+                  .input-group
+                    span.input-group-text $
+                    = f.number_field :tax, class: 'form-control', step: 0.01, min: 0, placeholder: '0.00'
+
+        .card.mb-4
+          .card-header Split Options
+          .card-body
+            .mb-3
+              .form-check
+                = radio_button_tag :split_type, 'equal', true, class: 'form-check-input'
+                = label_tag 'split_type_equal', 'Split equally among all members', class: 'form-check-label'
+              .form-check
+                = radio_button_tag :split_type, 'custom', false, class: 'form-check-input'
+                = label_tag 'split_type_custom', 'Custom split', class: 'form-check-label'
+
+            #participant-selection
+              h6.mt-3 Select participants:
+              - @members.each do |member|
+                .form-check
+                  = check_box_tag 'participant_ids[]', member.id, true, class: 'form-check-input', id: "member_#{member.id}"
+                  = label_tag "member_#{member.id}", member.display_name, class: 'form-check-label'
+                  - if member == current_user
+                    span.badge.bg-secondary.ms-1 You
+
+        = f.submit 'Create Expense', class: 'btn btn-primary'
+        = link_to 'Cancel', @group, class: 'btn btn-link'

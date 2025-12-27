@@ -1,0 +1,87 @@
+.container.py-4
+  h1.mb-4 Dashboard
+
+  .row.mb-4
+    .col-md-4
+      .card.text-white class=((@total_balance >= 0) ? 'bg-success' : 'bg-danger')
+        .card-body
+          h5.card-title Total Balance
+          h2.card-text = number_to_currency(@total_balance)
+
+    .col-md-4
+      .card.bg-danger.text-white
+        .card-body
+          h5.card-title You Owe
+          h2.card-text = number_to_currency(@total_you_owe)
+
+    .col-md-4
+      .card.bg-success.text-white
+        .card-body
+          h5.card-title Owed to You
+          h2.card-text = number_to_currency(@total_owed_to_you)
+
+  .row
+    .col-md-6
+      .card.mb-4
+        .card-header
+          h5 Friends You Owe
+        .card-body
+          - if @friends_you_owe.any?
+            ul.list-group.list-group-flush
+              - @friends_you_owe.each do |debt|
+                li.list-group-item.d-flex.justify-content-between.align-items-center
+                  = link_to debt[:user].display_name, friend_path(debt[:user])
+                  span.badge.bg-danger.rounded-pill = number_to_currency(debt[:amount])
+          - else
+            p.text-muted You don't owe anyone!
+
+      .card.mb-4
+        .card-header
+          h5 Friends Who Owe You
+        .card-body
+          - if @friends_who_owe_you.any?
+            ul.list-group.list-group-flush
+              - @friends_who_owe_you.each do |credit|
+                li.list-group-item.d-flex.justify-content-between.align-items-center
+                  = link_to credit[:user].display_name, friend_path(credit[:user])
+                  span.badge.bg-success.rounded-pill = number_to_currency(credit[:amount])
+          - else
+            p.text-muted No one owes you anything!
+
+    .col-md-6
+      .card.mb-4
+        .card-header.d-flex.justify-content-between.align-items-center
+          h5.mb-0 Your Groups
+          = link_to 'New Group', new_group_path, class: 'btn btn-primary btn-sm'
+        .card-body
+          - if @groups.any?
+            ul.list-group.list-group-flush
+              - @groups.each do |group|
+                li.list-group-item.d-flex.justify-content-between.align-items-center
+                  = link_to group.name, group
+                  - balance = BalanceService.new(group).balance_for(current_user)
+                  - if balance > 0
+                    span.badge.bg-success.rounded-pill = number_to_currency(balance)
+                  - elsif balance < 0
+                    span.badge.bg-danger.rounded-pill = number_to_currency(balance)
+                  - else
+                    span.badge.bg-secondary.rounded-pill Settled
+          - else
+            p.text-muted No groups yet. Create one to get started!
+
+      .card.mb-4
+        .card-header
+          h5 Your Recent Expenses
+        .card-body
+          - if @recent_expenses.any?
+            ul.list-group.list-group-flush
+              - @recent_expenses.each do |expense|
+                li.list-group-item
+                  .d-flex.justify-content-between
+                    div
+                      strong = expense.description
+                      br
+                      small.text-muted = expense.group.name
+                    span.badge.bg-primary = number_to_currency(expense.total_amount)
+          - else
+            p.text-muted No expenses yet!

@@ -1,17 +1,33 @@
 header
   nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
     .container-fluid
-      a.navbar-brand href="#"  Splitwise
-      button.navbar-toggler aria-controls="navbarCollapse" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarCollapse" data-bs-toggle="collapse" type="button" 
+      = link_to 'Splitwise', root_path, class: 'navbar-brand'
+      button.navbar-toggler aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" data-bs-target="#navbarCollapse" data-bs-toggle="collapse" type="button"
         span.navbar-toggler-icon
-      .d-flex
-        #navbarNavDarkDropdown.collapse.navbar-collapse
+      #navbarCollapse.collapse.navbar-collapse
+        ul.navbar-nav.me-auto.mb-2.mb-md-0
+          li.nav-item
+            = link_to 'Dashboard', dashboard_path, class: 'nav-link'
+          li.nav-item
+            = link_to 'Groups', groups_path, class: 'nav-link'
+        .d-flex
           ul.navbar-nav
             li.nav-item.dropdown
-              a#navbarDarkDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button" 
-                | Account
-              ul.dropdown-menu.dropdown-menu-dark aria-labelledby="navbarDarkDropdownMenuLink" 
-                li
-                  = link_to destroy_user_session_path, method: :delete, class: 'dropdown-item'
-                    .icon-logout.font-size-20.mr-4
-                    | Logout
+              a#navbarDarkDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button"
+                - if current_user
+                  = current_user.display_name
+                - else
+                  | Account
+              ul.dropdown-menu.dropdown-menu-dark.dropdown-menu-end aria-labelledby="navbarDarkDropdownMenuLink"
+                - if current_user
+                  li
+                    = link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item'
+                  li
+                    hr.dropdown-divider
+                  li
+                    = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+                - else
+                  li
+                    = link_to 'Login', new_user_session_path, class: 'dropdown-item'
+                  li
+                    = link_to 'Sign Up', new_user_registration_path, class: 'dropdown-item'
